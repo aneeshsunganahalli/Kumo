@@ -2,7 +2,6 @@ CREATE TABLE users (
   id INTEGER PRIMARY KEY AUTOINCREMENT,
   username TEXT UNIQUE NOT NULL,
   email TEXT UNIQUE NOT NULL,
-  password_hash TEXT NOT NULL,
   created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
@@ -28,7 +27,7 @@ CREATE TABLE ui_preferences (
   user_id INTEGER PRIMARY KEY REFERENCES users(id) ON DELETE CASCADE,
   font_family TEXT DEFAULT 'Inter',
   theme_mode TEXT DEFAULT 'dark',
-  fallback_color TEXT '#141414',
+  fallback_color TEXT DEFAULT '#141414',
   active_background_id INTEGER REFERENCES backgrounds(id) ON DELETE SET NULL,
   active_audio_id INTEGER REFERENCES audio_tracks(id) ON DELETE SET NULL,
   updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
